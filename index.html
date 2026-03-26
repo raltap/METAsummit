@@ -301,6 +301,28 @@ footer{background:var(--dark-navy);border-top:1px solid var(--border);padding:40
   .countdown-grid{gap:20px}
   .awards-past{flex-direction:column}
 }
+/* Mobil Buton Düzeltmesi */
+@media (max-width: 600px) {
+  .hero-cta {
+    display: flex;
+    flex-direction: column; /* Butonları alt alta dizerek alanı rahatlatır */
+    align-items: center;
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .register-wrap, .btn-primary, .btn-secondary {
+    width: 100%; /* Butonların ekran dışına taşmasını engeller */
+    max-width: 300px; /* Çok geniş olmamaları için sınır koyar */
+    text-align: center;
+  }
+
+  .register-dropdown {
+    width: 90vw; /* Menünün ekranın çok dışına çıkmasını önler */
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
+}
 </style>
 </head>
 <body>

@@ -288,8 +288,19 @@ footer{background:var(--dark-navy);border-top:1px solid var(--border);padding:40
 .wavy-divider{height:2px;background:linear-gradient(90deg,transparent,var(--coral),var(--pink),var(--violet),var(--blue-glow),transparent);opacity:.3}
 
 /* MOBILE */
-/* Mobil Menü ve Yatay Kayma Düzeltmesi */
-
+@media(max-width:900px){
+  .about-grid,.venue-grid,.contact-grid{grid-template-columns:1fr}
+  .editions-grid{grid-template-columns:1fr}
+  .nav-links{display:none;flex-direction:column;position:fixed;top:62px;left:0;right:0;background:rgba(9,18,41,0.97);padding:24px 5%;gap:20px}
+  .nav-links.open{display:flex}
+  .hamburger{display:flex}
+  .register-dropdown{position:fixed;left:5%;right:5%;transform:none}
+}
+@media(max-width:600px){
+  .meta-pillars{grid-template-columns:1fr 1fr}
+  .countdown-grid{gap:20px}
+  .awards-past{flex-direction:column}
+}
 </style>
 </head>
 <body>

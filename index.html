@@ -288,49 +288,39 @@ footer{background:var(--dark-navy);border-top:1px solid var(--border);padding:40
 .wavy-divider{height:2px;background:linear-gradient(90deg,transparent,var(--coral),var(--pink),var(--violet),var(--blue-glow),transparent);opacity:.3}
 
 /* MOBILE */
-@media(max-width:900px){
-  .about-grid,.venue-grid,.contact-grid{grid-template-columns:1fr}
-  .editions-grid{grid-template-columns:1fr}
-  .nav-links{display:none;flex-direction:column;position:fixed;top:62px;left:0;right:0;background:rgba(9,18,41,0.97);padding:24px 5%;gap:20px}
-  .nav-links.open{display:flex}
-  .hamburger{display:flex}
-  .register-dropdown{position:fixed;left:5%;right:5%;transform:none}
-}
-@media(max-width:600px){
-  .meta-pillars{grid-template-columns:1fr 1fr}
-  .countdown-grid{gap:20px}
-  .awards-past{flex-direction:column}
-}
-@media(max-width:900px){
-  .about-grid, .venue-grid, .contact-grid { grid-template-columns:1fr; }
-  .editions-grid { grid-template-columns:1fr; }
-  .nav-links { display:none; flex-direction:column; position:fixed; top:62px; left:0; right:0; background:rgba(9,18,41,0.97); padding:24px 5%; gap:20px; }
-  .nav-links.open { display:flex; }
-  .hamburger { display:flex; }
-  
-  /* Buton ve Menü Düzeltmeleri */
-  .hero-cta { display: flex; flex-direction: column; align-items: center; gap: 12px; width: 100%; }
-  .btn-primary, .btn-secondary, .register-wrap { width: 100%; max-width: 320px; }
-  .register-dropdown { 
-    position: absolute; 
-    left: 50% !important; 
-    right: auto !important; 
-    top: calc(100% + 10px) !important; 
-    transform: translateX(-50%) !important; 
-    min-width: 280px; 
-    width: 90vw; 
-    max-width: 300px; 
-  }
-}
+/* Mobil Menü ve Yatay Kayma Düzeltmesi */
+@media (max-width: 900px) {
+    /* Sayfanın sağa taşmasını zorla engelle */
+    html, body {
+        overflow-x: hidden !important;
+        width: 100% !important;
+        position: relative !important;
+    }
 
-@media(max-width:600px){
-  .meta-pillars { grid-template-columns:1fr 1fr; }
-  .countdown-grid { gap:20px; }
-  .awards-past { flex-direction:column; }
-}
-body {
-  overflow-x: hidden;
-  width: 100%;
+    /* Navigasyon barını ekran genişliğine sabitle */
+    nav {
+        width: 100% !important;
+        left: 0 !important;
+        right: 0 !important;
+        padding: 10px 5% !important;
+        display: flex !important;
+        justify-content: space-between !important;
+    }
+
+    /* Üç çizgi butonunun (hamburger) sağ sınırda kalmasını sağla */
+    .hamburger {
+        display: flex !important;
+        margin-right: 0 !important;
+        position: relative !important;
+        z-index: 1001;
+    }
+
+    /* Açılan linklerin ekranı itmesini engelle */
+    .nav-links {
+        width: 100% !important;
+        left: 0 !important;
+        right: 0 !important;
+    }
 }
 </style>
 </head>

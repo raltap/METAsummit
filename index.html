@@ -301,6 +301,33 @@ footer{background:var(--dark-navy);border-top:1px solid var(--border);padding:40
   .countdown-grid{gap:20px}
   .awards-past{flex-direction:column}
 }
+/* Easter Egg Stilleri */
+.ee-modal {
+  display: none; position: fixed; z-index: 10000; left: 0; top: 0;
+  width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); backdrop-filter: blur(8px);
+}
+.ee-modal-content {
+  background: var(--dark-navy); margin: 5% auto; padding: 30px;
+  border: 1px solid var(--violet); width: 90%; max-width: 700px;
+  border-radius: 20px; position: relative; text-align: center;
+}
+.ee-close {
+  position: absolute; right: 20px; top: 10px; color: #fff; font-size: 30px; cursor: pointer;
+}
+.ee-grid { 
+  display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 10px;
+  max-height: 75vh; overflow-y: auto; padding-right: 5px;
+}
+.ee-person { padding: 15px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); }
+.ee-avatar {
+  width: 55px; height: 55px; border-radius: 50%; margin: 0 auto 10px;
+  display: flex; align-items: center; justify-content: center; font-weight: bold; font-family: 'Bebas Neue';
+}
+.ee-name { font-size: 1rem; font-weight: 700; color: #fff; }
+.ee-role { font-size: 0.75rem; color: var(--gray); margin-top: 4px; }
+
+@media(max-width: 600px) { .ee-grid { grid-template-columns: 1fr; } }
+
 </style>
 </head>
 <body>
@@ -308,6 +335,7 @@ footer{background:var(--dark-navy);border-top:1px solid var(--border);padding:40
 <!-- NAV -->
 <nav id="navbar">
   <div class="nav-logo">META SUMMIT</div>
+  <div id="easter-egg-trigger" onclick="openEasterEgg()" style="width: 20px; height: 20px; cursor: help; display: inline-block;"></div>
   <div class="nav-links" id="navLinks">
     <a href="#about" data-tr="Hakkında" data-en="About">Hakkında</a>
     <a href="#meta2026" data-tr="2026" data-en="2026">2026</a>
@@ -645,7 +673,7 @@ footer{background:var(--dark-navy);border-top:1px solid var(--border);padding:40
           </div>
           <div class="transport-item">
             <span class="transport-badge bus">OTOBÜS</span>
-            <span class="transport-text">79E, 79K, 79B, 78F, 36F, MK12</span>
+            <span class="transport-text">78C, 78F, 78G, 78K, 78Ş, 78E, Kayaşehir tarafından MK22</span>
           </div>
         </div>
       </div>
@@ -674,7 +702,7 @@ footer{background:var(--dark-navy);border-top:1px solid var(--border);padding:40
         <div class="channel-icon mail">✉️</div>
         <div class="channel-info"><strong>E-Posta</strong><span>meta.summit@stu.ihu.edu.tr</span></div>
       </a>
-      <a href="https://linkedin.com" target="_blank" class="channel-card">
+      <a href="https://www.linkedin.com/company/meta-summit/" target="_blank" class="channel-card">
         <div class="channel-icon linkedin">💼</div>
         <div class="channel-info"><strong>LinkedIn</strong><span>META Summit İbn Haldun Üniversitesi</span></div>
       </a>
@@ -717,6 +745,64 @@ footer{background:var(--dark-navy);border-top:1px solid var(--border);padding:40
     © 2026 META Summit · Tüm hakları saklıdır. · <a href="https://metasummit.site" style="color:var(--coral);text-decoration:none">metasummit.site</a>
   </p>
 </footer>
+
+<div id="easter-egg-modal" class="ee-modal">
+  <div class="ee-modal-content">
+    <span class="ee-close" onclick="closeEasterEgg()">&times;</span>
+    <h2 style="color: var(--coral); font-family: 'Bebas Neue'; font-size: 2.5rem; margin-bottom: 20px;">MUTFAKTAKİLER</h2>
+    
+    <div class="ee-grid">
+      <div class="ee-person" style="grid-column: span 2; border: 1px solid var(--coral); background: rgba(255, 77, 106, 0.1); margin-bottom: 10px;">
+         <p style="font-size: 0.6rem; color: var(--coral); margin-bottom: 10px; letter-spacing: 2px; font-weight: 800;">CREATIVE & TECH</p>
+         <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 15px;">
+            <div>
+              <div class="ee-avatar" style="background: linear-gradient(135deg, var(--coral), var(--pink));">MA</div>
+              <div class="ee-name">Mehmet Akif Ayvacık</div>
+              <div class="ee-role">Site Tasarımcısı / Medyacı / Joker Eleman</div>
+            </div>
+            <div>
+              <div class="ee-avatar" style="background: linear-gradient(135deg, var(--coral), var(--pink));">MB</div>
+              <div class="ee-name">Metehan Bahadır Serin</div>
+              <div class="ee-role">Joker Eleman (Ekürisi)</div>
+            </div>
+         </div>
+      </div>
+
+      <div class="ee-person">
+        <div class="ee-avatar" style="background: var(--violet);">SEG</div>
+        <div class="ee-name">Süleyman Enes Güngör</div>
+        <div class="ee-role">Kariyer ve Gelişim Kulübü Başkanı</div>
+      </div>
+      <div class="ee-person">
+        <div class="ee-avatar" style="background: var(--violet);">HRA</div>
+        <div class="ee-name">Hatice Rümeysa Avcı</div>
+        <div class="ee-role">Kariyer ve Gelişim Bşk. Yrd.</div>
+      </div>
+      <div class="ee-person">
+        <div class="ee-avatar" style="background: var(--blue-glow);">ÖA</div>
+        <div class="ee-name">Özkan Ağaç</div>
+        <div class="ee-role">Ekonomi ve Finans Kulübü Başkanı</div>
+      </div>
+      <div class="ee-person">
+        <div class="ee-avatar" style="background: var(--blue-glow);">?</div>
+        <div class="ee-name">Yakında Eklenecek</div>
+        <div class="ee-role">Ekonomi ve Finans Bşk. Yrd.</div>
+      </div>
+
+      <div class="ee-person">
+        <div class="ee-avatar" style="background: #444;">AK</div>
+        <div class="ee-name">Aişe Korkmaz</div>
+        <div class="ee-role">Medya Sorumlusu</div>
+      </div>
+      <div class="ee-person">
+        <div class="ee-avatar" style="background: #444;">MS</div>
+        <div class="ee-name">Merve Saim</div>
+        <div class="ee-role">Medya Sorumlusu</div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <script>
 let lang='tr';
@@ -776,6 +862,20 @@ document.querySelectorAll('.speaker-card,.speaker-card-2026,.panel-person,.editi
 window.addEventListener('scroll',()=>{
   document.getElementById('navbar').style.boxShadow=window.scrollY>20?'0 4px 30px rgba(0,0,0,0.4)':'none';
 });
+
+
+function openEasterEgg() {
+  document.getElementById("easter-egg-modal").style.display = "block";
+}
+function closeEasterEgg() {
+  document.getElementById("easter-egg-modal").style.display = "none";
+}
+// Dışarı tıklayınca kapansın
+window.addEventListener('click', function(event) {
+  let modal = document.getElementById("easter-egg-modal");
+  if (event.target == modal) { modal.style.display = "none"; }
+});
+
 </script>
 </body>
 </html>

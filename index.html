@@ -301,27 +301,36 @@ footer{background:var(--dark-navy);border-top:1px solid var(--border);padding:40
   .countdown-grid{gap:20px}
   .awards-past{flex-direction:column}
 }
-/* Mobil Buton Düzeltmesi */
-@media (max-width: 600px) {
-  .hero-cta {
-    display: flex;
-    flex-direction: column; /* Butonları alt alta dizerek alanı rahatlatır */
-    align-items: center;
-    width: 100%;
-    padding: 0 10px;
+@media(max-width:900px){
+  .about-grid, .venue-grid, .contact-grid { grid-template-columns:1fr; }
+  .editions-grid { grid-template-columns:1fr; }
+  .nav-links { display:none; flex-direction:column; position:fixed; top:62px; left:0; right:0; background:rgba(9,18,41,0.97); padding:24px 5%; gap:20px; }
+  .nav-links.open { display:flex; }
+  .hamburger { display:flex; }
+  
+  /* Buton ve Menü Düzeltmeleri */
+  .hero-cta { display: flex; flex-direction: column; align-items: center; gap: 12px; width: 100%; }
+  .btn-primary, .btn-secondary, .register-wrap { width: 100%; max-width: 320px; }
+  .register-dropdown { 
+    position: absolute; 
+    left: 50% !important; 
+    right: auto !important; 
+    top: calc(100% + 10px) !important; 
+    transform: translateX(-50%) !important; 
+    min-width: 280px; 
+    width: 90vw; 
+    max-width: 300px; 
   }
+}
 
-  .register-wrap, .btn-primary, .btn-secondary {
-    width: 100%; /* Butonların ekran dışına taşmasını engeller */
-    max-width: 300px; /* Çok geniş olmamaları için sınır koyar */
-    text-align: center;
-  }
-
-  .register-dropdown {
-    width: 90vw; /* Menünün ekranın çok dışına çıkmasını önler */
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-  }
+@media(max-width:600px){
+  .meta-pillars { grid-template-columns:1fr 1fr; }
+  .countdown-grid { gap:20px; }
+  .awards-past { flex-direction:column; }
+}
+body {
+  overflow-x: hidden;
+  width: 100%;
 }
 </style>
 </head>

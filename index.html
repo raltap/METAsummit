@@ -321,8 +321,24 @@ footer{background:var(--dark-navy);border-top:1px solid var(--border);padding:40
 }
 .ee-person { padding: 15px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); }
 .ee-avatar {
-  width: 55px; height: 55px; border-radius: 50%; margin: 0 auto 10px;
-  display: flex; align-items: center; justify-content: center; font-weight: bold; font-family: 'Bebas Neue';
+  width: 55px; 
+  height: 55px; 
+  border-radius: 50%; 
+  margin: 0 auto 10px;
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  font-weight: bold; 
+  font-family: 'Bebas Neue';
+  overflow: hidden; /* Fotoğrafın taşmasını engelleyen kritik satır */
+  border: 2px solid var(--coral); /* Fotoğrafın etrafına şık bir çerçeve */
+}
+
+.ee-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Fotoğrafı sünnetmeden/bozmadan daireye sığdırır */
+  display: block;
 }
 .ee-name { font-size: 1rem; font-weight: 700; color: #fff; }
 .ee-role { font-size: 0.75rem; color: var(--gray); margin-top: 4px; }

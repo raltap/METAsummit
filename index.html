@@ -378,6 +378,108 @@ footer{background:var(--dark-navy);border-top:1px solid var(--border);padding:40
         left: 0 !important;
         right: 0 !important;
     }
+/* POPUP STYLES */
+.popup-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(9, 18, 41, 0.85);
+    backdrop-filter: blur(10px);
+    display: none; /* JS ile açılacak */
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+.popup-overlay.active { display: flex; opacity: 1; }
+
+.popup-card {
+    background: var(--dark-navy);
+    border: 2px solid var(--coral);
+    border-radius: 30px;
+    padding: 40px;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 0 50px rgba(255, 77, 106, 0.3);
+    transform: translateY(30px);
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.popup-overlay.active .popup-card { transform: translateY(0); }
+
+.popup-close {
+    position: absolute;
+    top: 20px; right: 20px;
+    background: none; border: none;
+    color: var(--gray);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.popup-close:hover { color: var(--coral); }
+
+.popup-badge {
+    background: var(--coral);
+    color: white;
+    padding: 6px 15px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.popup-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5rem;
+    line-height: 1.1;
+    margin-bottom: 15px;
+    background: linear-gradient(90deg, #fff, var(--coral));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.popup-text {
+    color: var(--gray);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.popup-btns {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.popup-btn {
+    padding: 16px;
+    border-radius: 15px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.popup-btn.internal {
+    background: linear-gradient(135deg, var(--violet), var(--blue-glow));
+    color: white;
+}
+
+.popup-btn.external {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--coral);
+    color: white;
+}
+
+.popup-btn:hover { transform: scale(1.02); filter: brightness(1.2); }
 
 </style>
 <script>
@@ -1070,6 +1172,24 @@ footer{background:var(--dark-navy);border-top:1px solid var(--border);padding:40
   </div>
 </div>
 
+<!-- AD POPUP -->
+<div class="popup-overlay" id="adPopup">
+    <div class="popup-card">
+        <button class="popup-close" onclick="closePopup()">&times;</button>
+        <div class="popup-badge" data-tr="SON 200 KONTENJAN" data-en="LAST 200 SLOTS">SON 200 KONTENJAN</div>
+        <h2 class="popup-title" data-tr="5 MAYIS META SUMMIT İÇİN KAYITLAR AÇILDI!" data-en="REGISTRATION OPEN FOR MAY 5TH!">5 MAYIS META SUMMIT İÇİN KAYITLAR AÇILDI!</h2>
+        <p class="popup-text" data-tr="Kontenjanlar dolmadan yerini hemen ayırt. Geleceğin teknolojisini yerinde keşfet!" data-en="Secure your spot before it's full. Explore the technology of the future on-site!">Kontenjanlar dolmadan yerini hemen ayırt. Geleceğin teknolojisini yerinde keşfet!</p>
+        
+        <div class="popup-btns">
+            <a href="https://forms.gle/HstyX2JPnw14tLMv8" target="_blank" class="popup-btn internal">
+                <span>🏛️</span> <span data-tr="İHÜ İçi Katılım Başvuru" data-en="Internal Registration (IHU)">İHÜ İçi Katılım Başvuru</span>
+            </a>
+            <a href="https://forms.gle/Dn1eA7cfCti2MZU78" target="_blank" class="popup-btn external">
+                <span>🌍</span> <span data-tr="İHÜ Dışı Katılım Başvuru" data-en="External Registration (Other)">İHÜ Dışı Katılım Başvuru</span>
+            </a>
+        </div>
+    </div>
+</div>
 
 <script>
 let lang='tr';
@@ -1143,6 +1263,28 @@ window.addEventListener('click', function(event) {
   if (event.target == modal) { modal.style.display = "none"; }
 });
 
+// Popup Fonksiyonları
+function openPopup() {
+    document.getElementById('adPopup').classList.add('active');
+    // Popup açıldığında arka plan kaymasını engellemek istersen:
+    document.body.style.overflow = 'hidden';
+}
+
+function closePopup() {
+    document.getElementById('adPopup').classList.remove('active');
+    document.body.style.overflow = 'auto';
+}
+
+// Site açıldıktan 1.5 saniye sonra popup'ı göster
+window.addEventListener('load', () => {
+    setTimeout(openPopup, 1500);
+});
+
+// Dışarı tıklayınca kapansın
+document.getElementById('adPopup').addEventListener('click', function(e) {
+    if (e.target === this) closePopup();
+});
+  
 </script>
 </body>
 </html>

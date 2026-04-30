@@ -1203,7 +1203,9 @@ window.addEventListener('click', function(event) {
 
 // Popup Fonksiyonları
 // Popup Fonksiyonları - Garantili Versiyon
-<!-- POPUP KUTUSU -->
+</script> <!-- BURASI ÇOK ÖNEMLİ! ÖNCEKİ SCRİPTİ KAPATTIK -->
+
+<!-- POPUP HTML (SCRİPTİN DIŞINDA) -->
 <div id="adPopup">
     <div class="popup-card">
         <button class="popup-close" onclick="closePopup()">&times;</button>
@@ -1217,24 +1219,31 @@ window.addEventListener('click', function(event) {
     </div>
 </div>
 
-<script>
+<script> <!-- ŞİMDİ POPUP İÇİN YENİ SCRİPT AÇTIK -->
 // POPUP FONKSİYONLARI
 function openPopup() {
-    document.getElementById('adPopup').classList.add('active');
-    document.body.style.overflow = 'hidden';
+    const p = document.getElementById('adPopup');
+    if(p) {
+        p.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
 }
 function closePopup() {
-    document.getElementById('adPopup').classList.remove('active');
-    document.body.style.overflow = 'auto';
+    const p = document.getElementById('adPopup');
+    if(p) {
+        p.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
 }
+
 // 1.5 saniye sonra aç
 window.addEventListener('load', () => setTimeout(openPopup, 1500));
-// Dışarı tıklayınca kapat
-window.addEventListener('click', (e) => { if (e.target == document.getElementById('adPopup')) closePopup(); });
 
-/* DİĞER FONKSİYONLARIN (DİL DEĞİŞTİRME, MENU VB.) BURADAN AŞAĞIYA DEVAM EDEBİLİR */
-</script>
-  
+// Dışarı tıklayınca kapat
+window.addEventListener('click', (e) => { 
+    if (e.target == document.getElementById('adPopup')) closePopup(); 
+});
+
 </script>
 </body>
 </html>

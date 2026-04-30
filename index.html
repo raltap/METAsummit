@@ -380,15 +380,16 @@ footer{background:var(--dark-navy);border-top:1px solid var(--border);padding:40
     }
 }
 /* POPUP STYLES */
+/* POPUP STYLES - HEM PC HEM MOBİL İÇİN DIŞARI ÇIKARILDI */
 .popup-overlay {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(9, 18, 41, 0.85);
+    background: rgba(9, 18, 41, 0.90);
     backdrop-filter: blur(10px);
     display: none; /* JS ile açılacak */
     align-items: center;
     justify-content: center;
-    z-index: 999999 !important;
+    z-index: 999999 !important; /* En üstte durması için */
     opacity: 0;
     transition: opacity 0.4s ease;
 }
@@ -408,79 +409,14 @@ footer{background:var(--dark-navy);border-top:1px solid var(--border);padding:40
     transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 .popup-overlay.active .popup-card { transform: translateY(0); }
-
-.popup-close {
-    position: absolute;
-    top: 20px; right: 20px;
-    background: none; border: none;
-    color: var(--gray);
-    font-size: 1.5rem;
-    cursor: pointer;
-    transition: color 0.2s;
-}
-.popup-close:hover { color: var(--coral); }
-
-.popup-badge {
-    background: var(--coral);
-    color: white;
-    padding: 6px 15px;
-    border-radius: 50px;
-    font-size: 0.75rem;
-    font-weight: 800;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    display: inline-block;
-    margin-bottom: 20px;
-}
-
-.popup-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 2.5rem;
-    line-height: 1.1;
-    margin-bottom: 15px;
-    background: linear-gradient(90deg, #fff, var(--coral));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.popup-text {
-    color: var(--gray);
-    font-size: 1rem;
-    line-height: 1.6;
-    margin-bottom: 30px;
-}
-
-.popup-btns {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.popup-btn {
-    padding: 16px;
-    border-radius: 15px;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 0.9rem;
-    transition: all 0.3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
-
-.popup-btn.internal {
-    background: linear-gradient(135deg, var(--violet), var(--blue-glow));
-    color: white;
-}
-
-.popup-btn.external {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--coral);
-    color: white;
-}
-
-.popup-btn:hover { transform: scale(1.02); filter: brightness(1.2); }
+.popup-close { position: absolute; top: 20px; right: 20px; background: none; border: none; color: var(--gray); font-size: 1.5rem; cursor: pointer; }
+.popup-badge { background: var(--coral); color: white; padding: 6px 15px; border-radius: 50px; font-size: 0.75rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; display: inline-block; margin-bottom: 20px; }
+.popup-title { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; line-height: 1.1; margin-bottom: 15px; background: linear-gradient(90deg, #fff, var(--coral)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.popup-text { color: var(--gray); font-size: 1rem; line-height: 1.6; margin-bottom: 30px; }
+.popup-btns { display: flex; flex-direction: column; gap: 12px; }
+.popup-btn { padding: 16px; border-radius: 15px; text-decoration: none; font-weight: 700; font-size: 0.9rem; transition: all 0.3s; display: flex; align-items: center; justify-content: center; gap: 10px; }
+.popup-btn.internal { background: linear-gradient(135deg, var(--violet), var(--blue-glow)); color: white; }
+.popup-btn.external { background: rgba(255, 255, 255, 0.05); border: 1px solid var(--coral); color: white; }
 
 </style>
 <script>
@@ -1182,10 +1118,11 @@ footer{background:var(--dark-navy);border-top:1px solid var(--border);padding:40
         <p class="popup-text" data-tr="Kontenjanlar dolmadan yerini hemen ayırt. Geleceğin teknolojisini yerinde keşfet!" data-en="Secure your spot before it's full. Explore the technology of the future on-site!">Kontenjanlar dolmadan yerini hemen ayırt. Geleceğin teknolojisini yerinde keşfet!</p>
         
         <div class="popup-btns">
-            <a href="https://forms.gle/HstyX2JPnw14tLMv8" target="_blank" class="popup-btn internal">
+            <!-- GÜNCEL LİNKLER -->
+            <a href="https://forms.gle/htp1VMKv8PMTMMWSA" target="_blank" class="popup-btn internal">
                 <span>🏛️</span> <span data-tr="İHÜ İçi Katılım Başvuru" data-en="Internal Registration (IHU)">İHÜ İçi Katılım Başvuru</span>
             </a>
-            <a href="https://forms.gle/Dn1eA7cfCti2MZU78" target="_blank" class="popup-btn external">
+            <a href="https://forms.gle/KmaYVL4xD4G7xpa17" target="_blank" class="popup-btn external">
                 <span>🌍</span> <span data-tr="İHÜ Dışı Katılım Başvuru" data-en="External Registration (Other)">İHÜ Dışı Katılım Başvuru</span>
             </a>
         </div>

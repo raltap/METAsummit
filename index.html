@@ -383,24 +383,39 @@ footer{background:var(--dark-navy);border-top:1px solid var(--border);padding:40
 /* POPUP STYLES - HEM PC HEM MOBİL İÇİN DIŞARI ÇIKARILDI */
 /* PC VE MOBİL İÇİN ÖZEL POPUP */
 /* REKLAM POPUP TASARIMI - KESİN ÇÖZÜM */
-<!-- REKLAM POPUP -->
-<div id="promoPopup">
-    <div class="popup-card">
-        <button class="popup-close" onclick="closePopup()">&times;</button>
-        <div class="popup-badge" data-tr="SON 200 KONTENJAN" data-en="LAST 200 SLOTS">SON 200 KONTENJAN</div>
-        <h2 class="popup-title" data-tr="5 MAYIS META SUMMIT İÇİN KAYITLAR AÇILDI!" data-en="REGISTRATION OPEN FOR MAY 5TH!">5 MAYIS META SUMMIT İÇİN KAYITLAR AÇILDI!</h2>
-        <p class="popup-text" data-tr="Kontenjanlar dolmadan yerini hemen ayırt. Geleceğin teknolojisini yerinde keşfet!" data-en="Secure your spot before it's full. Explore the technology of the future on-site!">Kontenjanlar dolmadan yerini hemen ayırt. Geleceğin teknolojisini yerinde keşfet!</p>
-        
-        <div class="popup-btns">
-            <a href="https://forms.gle/htp1VMKv8PMTMMWSA" target="_blank" class="popup-btn internal">
-                <span>🏛️</span> <span data-tr="İHÜ İçi Katılım Başvuru" data-en="Internal Registration (IHU)">İHÜ İçi Katılım Başvuru</span>
-            </a>
-            <a href="https://forms.gle/KmaYVL4xD4G7xpa17" target="_blank" class="popup-btn external">
-                <span>🌍</span> <span data-tr="İHÜ Dışı Katılım Başvuru" data-en="External Registration (Other)">İHÜ Dışı Katılım Başvuru</span>
-            </a>
-        </div>
-    </div>
-</div>
+} /* Önceki mobil kodunu kapatan kritik parantez */
+
+/* POPUP TASARIMI - HEM PC HEM MOBİL İÇİN DIŞARI ÇIKARILDI */
+#adPopup {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(9, 18, 41, 0.90); backdrop-filter: blur(10px);
+    display: none; align-items: center; justify-content: center;
+    z-index: 9999999 !important; opacity: 0; transition: opacity 0.4s ease;
+}
+#adPopup.active { display: flex; opacity: 1; }
+
+#adPopup .popup-card {
+    background: #091229; border: 2px solid #FF4D6A; border-radius: 30px;
+    padding: 40px; max-width: 500px; width: 90%; text-align: center;
+    position: relative; box-shadow: 0 0 50px rgba(255, 77, 106, 0.3);
+}
+
+#adPopup .popup-badge { 
+    background: #FF4D6A; color: white; padding: 6px 15px; border-radius: 50px; 
+    font-size: 0.75rem; font-weight: 800; margin-bottom: 20px; display: inline-block; 
+}
+
+#adPopup .popup-title { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; margin-bottom: 15px; color: #fff; }
+#adPopup .popup-text { color: #a0a8c0; font-size: 1rem; line-height: 1.6; margin-bottom: 30px; }
+#adPopup .popup-btns { display: flex; flex-direction: column; gap: 12px; }
+
+#adPopup .popup-btn { 
+    padding: 16px; border-radius: 15px; text-decoration: none; font-weight: 700; 
+    font-size: 0.9rem; transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 10px; color: white;
+}
+#adPopup .btn-in { background: linear-gradient(135deg, #7B2FBE, #4B6EF5); }
+#adPopup .btn-out { border: 1px solid #FF4D6A; background: rgba(255,255,255,0.05); }
+#adPopup .popup-close { position: absolute; top: 20px; right: 20px; background: none; border: none; color: #a0a8c0; font-size: 1.5rem; cursor: pointer; }
 
   
 </style>
@@ -1188,37 +1203,37 @@ window.addEventListener('click', function(event) {
 
 // Popup Fonksiyonları
 // Popup Fonksiyonları - Garantili Versiyon
+<!-- POPUP KUTUSU -->
+<div id="adPopup">
+    <div class="popup-card">
+        <button class="popup-close" onclick="closePopup()">&times;</button>
+        <div class="popup-badge">SON 200 KONTENJAN</div>
+        <h2 class="popup-title">5 MAYIS META SUMMIT İÇİN KAYITLAR AÇILDI!</h2>
+        <p class="popup-text">Kontenjanlar dolmadan yerini hemen ayırt. Geleceğin teknolojisini yerinde keşfet!</p>
+        <div class="popup-btns">
+            <a href="https://forms.gle/htp1VMKv8PMTMMWSA" target="_blank" class="popup-btn btn-in">🏛️ İHÜ İçi Katılım Başvuru</a>
+            <a href="https://forms.gle/KmaYVL4xD4G7xpa17" target="_blank" class="popup-btn btn-out">🌍 İHÜ Dışı Katılım Başvuru</a>
+        </div>
+    </div>
+</div>
+
+<script>
+// POPUP FONKSİYONLARI
 function openPopup() {
-    const p = document.getElementById('promoPopup');
-    if(p) {
-        p.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
+    document.getElementById('adPopup').classList.add('active');
+    document.body.style.overflow = 'hidden';
 }
-
 function closePopup() {
-    const p = document.getElementById('promoPopup');
-    if(p) {
-        p.classList.remove('active');
-        document.body.style.overflow = 'auto';
-    }
+    document.getElementById('adPopup').classList.remove('active');
+    document.body.style.overflow = 'auto';
 }
+// 1.5 saniye sonra aç
+window.addEventListener('load', () => setTimeout(openPopup, 1500));
+// Dışarı tıklayınca kapat
+window.addEventListener('click', (e) => { if (e.target == document.getElementById('adPopup')) closePopup(); });
 
-window.addEventListener('load', () => setTimeout(openPopup, 1000));
-
-window.addEventListener('click', (e) => {
-    if (e.target === document.getElementById('promoPopup')) closePopup();
-});
-
-// Site açıldıktan 1 saniye sonra popup'ı göster
-window.addEventListener('load', () => {
-    setTimeout(openPopup, 200);
-});
-
-// Dışarı tıklayınca kapanma (ID güncellendi)
-window.addEventListener('click', function(e) {
-    if (e.target === document.getElementById('promoPopup')) closePopup();
-});
+/* DİĞER FONKSİYONLARIN (DİL DEĞİŞTİRME, MENU VB.) BURADAN AŞAĞIYA DEVAM EDEBİLİR */
+</script>
   
 </script>
 </body>
